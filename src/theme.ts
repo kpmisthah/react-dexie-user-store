@@ -1,11 +1,10 @@
 
 import { createTheme, alpha } from "@mui/material/styles";
 
-// Premium Colors
-const primaryColor = "#6366f1"; // Indigo
-const secondaryColor = "#ec4899"; // Pink
-const backgroundColor = "#0f172a"; // Slate 900
-const surfaceColor = "#1e293b"; // Slate 800
+const primaryColor = "#6366f1"; 
+const secondaryColor = "#ec4899"; 
+const backgroundColor = "#0f172a"; 
+const surfaceColor = "#1e293b"; 
 
 export const theme = createTheme({
     palette: {

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from "react";
 import { db } from "../db";
 import { type User } from "../interface/user.interface";
