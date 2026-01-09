@@ -8,29 +8,13 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useUsers } from "./hooks/useUsers";
-import { useState } from "react";
 import DeleteConfirmationDialog from "./components/DeleteConfirmationDialog";
 import UserCard from "./components/UserCard";
 import AppHeader from "./components/AppHeader";
 
 export default function App() {
-  const { users, loading, refreshUsers, deleteUser } = useUsers();
-  const [deleteConfirmationId, setDeleteConfirmationId] = useState<string | null>(null);
+  const { users, loading, refreshUsers, handleCancelDelete, handleConfirmDelete, handleDeleteClick, deleteConfirmationId } = useUsers();
 
-  const handleDeleteClick = (id: string) => {
-    setDeleteConfirmationId(id);
-  };
-
-  const handleConfirmDelete = () => {
-    if (deleteConfirmationId) {
-      deleteUser(deleteConfirmationId);
-      setDeleteConfirmationId(null);
-    }
-  };
-
-  const handleCancelDelete = () => {
-    setDeleteConfirmationId(null);
-  };
 
   return (
     <Box sx={{ minHeight: "100vh", pb: 10 }}>

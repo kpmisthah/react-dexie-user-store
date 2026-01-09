@@ -6,6 +6,7 @@ import { fetchUsers } from "../api";
 export const useUsers = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
+    const [deleteConfirmationId, setDeleteConfirmationId] = useState<string | null>(null);
 
     const loadUsers = useCallback(async () => {
         try {
@@ -53,10 +54,30 @@ export const useUsers = () => {
         loadUsers();
     }, [loadUsers]);
 
+    const handleDeleteClick = (id: string) => {
+        setDeleteConfirmationId(id);
+    };
+
+    const handleConfirmDelete = () => {
+        if (deleteConfirmationId) {
+            deleteUser(deleteConfirmationId);
+            setDeleteConfirmationId(null);
+        }
+    };
+
+    const handleCancelDelete = () => {
+        setDeleteConfirmationId(null);
+    };
+
+
     return {
         users,
         loading,
         refreshUsers,
         deleteUser,
+        handleCancelDelete,
+        handleConfirmDelete,
+        handleDeleteClick,
+        deleteConfirmationId
     };
 };
